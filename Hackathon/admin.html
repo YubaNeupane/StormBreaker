@@ -1,0 +1,100 @@
+<html>
+<head>
+  <title>Firebase Login</title>
+  <link rel="stylesheet" href="adminstyle.css" />
+  <line rel="html" href = "index.html" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+</head>
+<body>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+
+
+  <div id="login_div" class="main-div">
+    <h3>Firebase Web login Example</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button onclick="login()">Login to Account</button>
+  </div>
+
+  <div id="user_div" class="loggedin-div">
+    <h3>Welcome Admin</h3>
+    <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+    <button onclick="logout()">Logout</button>
+    <button id = "show" onclick="showData()">Show Data</button>
+
+        <li id="stuff" style="list-style-type: none;"></li>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+  <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyCtkcoYUSY9wY4JEm7GfWAS5Dhjexk_hcQ",
+    authDomain: "hackatonpsu.firebaseapp.com",
+    databaseURL: "https://hackatonpsu.firebaseio.com/",
+    projectId: "hackatonpsu",
+    storageBucket: "hackatonpsu.appspot.com",
+    messagingSenderId: "960025410178",
+    appId: "1:960025410178:web:1fa76203a1f43ea14f529b"
+  };  firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="admin.js"></script>
+  <script>
+    var data
+    var err;
+
+    function showData(){
+      var database = firebase.database();
+      ref = database.ref('users');
+      ref.on("value",gotData, errData);
+
+    }
+
+    function gotData(data){
+      var elements;
+
+      elements  = document.getElementById('show');
+      elements.style.display = "none";
+      var elem = document.getElementsByClassName('info');
+    console.log(elem);
+    for(var i =0; i<elem.length;i++){
+      elem[i].remove();
+    }
+    for(var i =0; i<elem.length;i++){
+      elem[i].remove();
+    }
+
+
+
+      var scores = data.val();
+      var keys = Object.keys(scores);
+      for(var i =0; i<keys.length;i++){
+        var k = keys[i];
+        var name = scores[k].name;
+        var email = scores[k].email;
+        var phone = scores[k].phone;
+        var address = scores[k].adress;
+        var nameRow = document.createElement('li',name);
+        nameRow.setAttribute("style", "display: list-item;");
+        nameRow.setAttribute("class","info");
+        nameRow.setAttribute("style","list-style-type: none; margin-bottom: 10px;");
+        nameRow.textContent = name + "    " + email + "    " + phone + "    " + address;
+        document.getElementById("stuff").appendChild(nameRow);
+        console.log(nameRow);
+      }
+
+
+
+
+    }
+    function errData(err){
+      console.log("ERROR!");
+      console.log(err);
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+    <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCtkcoYUSY9wY4JEm7GfWAS5Dhjexk_hcQ",
+      authDomain: "hackatonpsu.firebaseapp.com",
+      databaseURL: "https://hackatonpsu.firebaseio.com/",
+      projectId: "hackatonpsu",
+      storageBucket: "hackatonpsu.appspot.com",
+      messagingSenderId: "960025410178",
+      appId: "1:960025410178:web:1fa76203a1f43ea14f529b"
+    };firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    </head>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="materialize.min.css"/>
+    <title>Storm Breaker</title>
+  </head>
+  <body>
+    <center><div align="center">
+      <h5 style="font-size:3vw; color: black;"><b>Storm Breaker</b></h5>
+    </div></center>
+
+    <div align="center" width="300" height="100">
+        <script style = " canvas display:hidden; "src="main.js"></script>
+    </div>
+    <button><a href="admin.html">Admin Login</a></button>
+
+
+
+    <div class="container" style="z-index: 17px; box-shadow: 10px 10px 5px grey;" >
+    <form id="contact" action="" method="post">
+      <fieldset>
+        <input id = "name"placeholder="Your name" type="text" tabindex="1" required autofocus>
+      </fieldset>
+      <fieldset>
+        <input id = "email"placeholder="Your Email Address" type="email" tabindex="2" required>
+      </fieldset>
+      <fieldset>
+        <input id = "phone"placeholder="Your Phone Number" type="tel" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <input id = "address" placeholder="Your Adress" type="tel" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="submit"style="background:green;">Submit</button>
+      </fieldset>
+      </fieldset>
+    </form>
+  </div>
+
+  <script src="storeUserData.js"/>
+
+
+
+
+
+  </body>
+
+</html>
